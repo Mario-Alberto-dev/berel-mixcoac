@@ -52,11 +52,12 @@ legal: {
    2) DATOS (CATÁLOGO, SERVICIOS, PROMOS)
    - Aquí agregas/quitas productos
    ========================= */
+   const BASE = import.meta.env.BASE_URL;
 const PRODUCTS = [
-  { id:"p1", name:"Vinílica Interior Mate", category:"Pintura", use:"Interior", size:"19 L", yield:"90–110 m² (aprox.)", price:1250, desc:"Acabado mate, excelente cobertura para muros y plafones. Ideal para casa u oficina.", img: "/img/catalogo/berelex.green.png"  },
-  { id:"p2", name:"Vinílica Exterior Lavable", category:"Pintura", use:"Exterior", size:"19 L", yield:"80–100 m² (aprox.)", price:1650, desc:"Resiste intemperie y es lavable. Buena durabilidad para fachadas.", img: "/img/catalogo/kover.restaurador.png" },
-  { id:"p3", name:"Esmalte Base Agua Brillante", category:"Esmalte", use:"Interior/Exterior", size:"4 L", yield:"30–40 m² (aprox.)", price:620, desc:"Para herrería, puertas y barandales. Secado rápido, menos olor.", img: "/img/catalogo/mancha.al.aceite.png" },
-  { id:"p4", name:"Esmalte Anticorrosivo", category:"Esmalte", use:"Exterior", size:"1 L", yield:"8–10 m² (aprox.)", price:190, desc:"Protección contra óxido para metal. Recomendado como base.", img: "/img/catalogo/Qualik.png" },
+  { id:"p1", name:"Vinílica Interior Mate", category:"Pintura", use:"Interior", size:"19 L", yield:"90–110 m² (aprox.)", price:1250, desc:"Acabado mate, excelente cobertura para muros y plafones. Ideal para casa u oficina.", img: BASE + "img/catalogo/berelex.green.png"  },
+  { id:"p2", name:"Vinílica Exterior Lavable", category:"Pintura", use:"Exterior", size:"19 L", yield:"80–100 m² (aprox.)", price:1650, desc:"Resiste intemperie y es lavable. Buena durabilidad para fachadas.", img: BASE + "img/catalogo/kover.restaurador.png" },
+  { id:"p3", name:"Esmalte Base Agua Brillante", category:"Esmalte", use:"Interior/Exterior", size:"4 L", yield:"30–40 m² (aprox.)", price:620, desc:"Para herrería, puertas y barandales. Secado rápido, menos olor.", img: BASE + "img/catalogo/mancha.al.aceite.png" },
+  { id:"p4", name:"Esmalte Anticorrosivo", category:"Esmalte", use:"Exterior", size:"1 L", yield:"8–10 m² (aprox.)", price:190, desc:"Protección contra óxido para metal. Recomendado como base.", img: BASE + "img/catalogo/Qualik.png" },
   { id:"p5", name:"Impermeabilizante 3 años", category:"Impermeabilizante", use:"Exterior", size:"19 L", yield:"18–22 m² (2 manos)", price:1450, desc:"Sistema básico para techos en buen estado. Aplicación en 2 manos." },
   { id:"p6", name:"Impermeabilizante 5 años", category:"Impermeabilizante", use:"Exterior", size:"19 L", yield:"16–20 m² (2 manos)", price:1850, desc:"Mayor elasticidad y durabilidad. Recomendado para mantenimiento preventivo." },
   { id:"p7", name:"Sellador Acrílico", category:"Sellador", use:"Interior/Exterior", size:"19 L", yield:"80–100 m²", price:980, desc:"Mejora adherencia y uniforma absorción del muro. Reduce consumo de pintura." },
