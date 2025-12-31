@@ -52,7 +52,8 @@ legal: {
    2) DATOS (CATÁLOGO, SERVICIOS, PROMOS)
    - Aquí agregas/quitas productos
    ========================= */
-   const BASE = import.meta.env.BASE_URL;
+const BASE = import.meta.env.BASE_URL;
+const FALLBACK_IMG = `${BASE}img/catalogo/default.png`;
 const PRODUCTS = [
   { id:"p1", name:"Vinílica Interior Mate", category:"Pintura", use:"Interior", size:"19 L", yield:"90–110 m² (aprox.)", price:1250, desc:"Acabado mate, excelente cobertura para muros y plafones. Ideal para casa u oficina.", img: BASE + "img/catalogo/berelex.green.png"  },
   { id:"p2", name:"Vinílica Exterior Lavable", category:"Pintura", use:"Exterior", size:"19 L", yield:"80–100 m² (aprox.)", price:1650, desc:"Resiste intemperie y es lavable. Buena durabilidad para fachadas.", img: BASE + "img/catalogo/kover.restaurador.png" },
@@ -332,7 +333,7 @@ function renderCatalog(){
     card.className = "pCard";
     card.innerHTML = `
       <div class="pImg">
-      <img src="${p.img || '/img/catalogo/default.png'}" alt="${escapeAttr(p.name)}" loading="lazy">
+      <img src="${p.img || FALLBACK_IMG}" alt="${escapeAttr(p.name)}" loading="lazy" onerror="this.src='${FALLBACK_IMG}'">
       </div>
 
       <div class="pBody">
