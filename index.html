@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Título y descripción (SEO básico) -->
+  <title>Tienda de Pinturas | Catálogo, Igualación y Entrega</title>
+  <meta name="description" content="Tienda de pinturas: igualación de color, impermeabilizantes, esmaltes y más. Entrega a domicilio y pago con tarjeta."/>
+
+  <!-- ✅ En Vite el CSS lo importamos desde /src -->
+  <link rel="stylesheet" href="/src/style.css" />
+</head>
+
+<body>
+  <!-- =========================
+       HEADER / MENÚ
+       ========================= -->
+  <header>
+    <div class="wrap nav">
+      <!-- Logo + nombre -->
+      <a class="brand" href="#inicio" aria-label="Ir a inicio">
+        <div class="logo">
+          <img class="logoImg" src="img/logo-berel-mixcoac.png" alt="Berel Mixcoac"/>
+        </div>
+
+        <div>
+          <div class="brandTop">Pinturas</div>
+          <div class="brandBottom">Tu Color Ideal</div>
+        </div>
+      </a>
+
+      <!-- Links -->
+      <nav class="navlinks" aria-label="Navegación principal">
+        <a class="chip" href="#catalogo">Catálogo</a>
+        <a class="chip" href="#servicios">Servicios</a>
+        <a class="chip" href="#promos">Promos</a>
+        <a class="chip" href="#ubicacion">Ubicación</a>
+        <a class="chip" href="#contacto">Contacto</a>
+
+        <button class="iconbtn" id="btnTheme" type="button" aria-label="Cambiar tema">🌙</button>
+
+        <!-- Botón carrito -->
+        <button class="iconbtn" id="btnCart" aria-label="Abrir carrito">
+          🛒 <span class="badge" id="cartCount">0</span>
+        </button>
+
+        <!-- WhatsApp principal -->
+        <a class="btn" id="btnWhats" href="#" target="_blank" rel="noopener">
+          WhatsApp <span aria-hidden="true">↗</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- =========================
+       HERO / PORTADA
+       ========================= -->
+  <main id="inicio">
+    <div class="wrap hero">
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <span class="kicker">🎨 Igualación de color • ✅ Pago con tarjeta • 🚚 Entrega local</span>
+
+          <h1 class="h1">
+            Pintura exacta para tu proyecto,
+            <span class="accent">sin adivinar</span>.
+          </h1>
+
+          <p class="lead">
+            Elige por tipo, acabado y rendimiento. Cotiza rápido, revisa fichas y arma tu pedido.
+            Si ya tienes un color, lo igualamos con precisión.
+          </p>
+
+          <div class="heroActions">
+            <a class="btn" href="#catalogo">Ver catálogo</a>
+            <button class="ghost" id="btnCotizar">Cotizar por WhatsApp</button>
+            <button class="ghost" id="btnVerServicios">Ver servicios</button>
+          </div>
+
+          <div class="pillRow">
+            <span class="pill">Interior / Exterior</span>
+            <span class="pill">Esmaltes</span>
+            <span class="pill">Impermeabilizantes</span>
+            <span class="pill">Selladores</span>
+            <span class="pill">Herramienta</span>
+          </div>
+        </div>
+
+        <!-- Lado derecho: datos rápidos -->
+        <aside class="card heroAside" aria-label="Destacados">
+          <div class="miniCard">
+            <p class="miniTitle">⭐ Recomendación rápida</p>
+            <p class="miniText" id="recommendText">Cargando recomendación…</p>
+          </div>
+
+          <div class="miniCard">
+            <p class="miniTitle">🕒 Horario</p>
+            <p class="miniText" id="hoursText">—</p>
+          </div>
+
+          <div class="miniCard">
+            <p class="miniTitle">📍 Cobertura</p>
+            <p class="miniText">Entrega local según zona. También preparamos pedidos para recolección.</p>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <!-- =========================
+         SERVICIOS (se llenan por JS)
+         ========================= -->
+    <section id="servicios">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2 class="sectionTitle">Servicios en tienda</h2>
+            <p class="sectionLead">Te ayudamos a elegir, preparar y llevar el producto correcto para tu proyecto.</p>
+          </div>
+        </div>
+
+        <!-- JS mete aquí las tarjetas -->
+        <div class="grid3" id="servicesGrid"></div>
+      </div>
+    </section>
+
+    <!-- =========================
+         PROMOS (botón manda a WhatsApp)
+         ========================= -->
+    <section id="promos">
+      <div class="wrap">
+        <div class="card cta">
+          <div>
+            <h3>Promos del mes</h3>
+            <p>Arma tu compra con combos y descuentos. El botón genera el mensaje listo para WhatsApp.</p>
+          </div>
+          <button class="btn" id="btnPromo">Ver promos</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         CATÁLOGO (se llena por JS)
+         ========================= -->
+    <section id="catalogo">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2 class="sectionTitle">Catálogo</h2>
+            <p class="sectionLead">Busca por categoría y filtra por uso. “Detalles” abre una ficha del producto.</p>
+          </div>
+        </div>
+
+        <!-- Filtros -->
+        <div class="filters">
+          <div class="leftFilters">
+            <div class="field" role="search">
+              🔎 <input id="q" type="search" placeholder="Buscar: vinílica, esmalte, 3 años…" autocomplete="off" />
+            </div>
+
+            <select id="cat" class="select" aria-label="Filtrar por categoría"></select>
+            <select id="use" class="select" aria-label="Filtrar por uso"></select>
+          </div>
+
+          <div class="rightFilters">
+            <button class="iconbtn" id="btnClear">Limpiar</button>
+            <span class="small" id="resultInfo">—</span>
+          </div>
+        </div>
+
+        <!-- JS mete aquí las cards -->
+        <div class="catalogGrid" id="catalogGrid" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <!-- =========================
+         CONTACTO
+         ========================= -->
+    <section id="contacto">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2 class="sectionTitle">Contacto</h2>
+            <p class="sectionLead">Escríbenos por WhatsApp para cotizar. Aquí va dirección y horario.</p>
+          </div>
+        </div>
+
+        <div class="grid3">
+          <div class="sCard">
+            <h3 class="sCard__title">WhatsApp</h3>
+            <p class="sCard__text" id="waText">Cotiza rápido: medidas, área, color o foto del espacio.</p>
+            <div class="mt10">
+              <a class="btn" id="btnWhats2" href="#" target="_blank" rel="noopener">Abrir WhatsApp ↗</a>
+            </div>
+          </div>
+
+          <div class="sCard">
+            <h3 class="sCard__title">Ubicación</h3>
+            <p class="sCard__text" id="addressText">—</p>
+
+            <!-- Horario en formato de lista (lo llena JS) -->
+             <div class="hoursBox mt10" aria-label="Horario">
+              <div class="hoursTitle">🕒 Horario</div>
+              <ul class="hoursList" id="hoursList"></ul>
+             </div>            
+          </div>
+                      
+          <!--</div>-->
+
+          <div class="sCard">
+            <h3 class="sCard__title">Formas de pago</h3>
+            <p class="sCard__text">Efectivo, transferencia y tarjetas. Facturación disponible.</p>
+            <p class="sCard__text mt8">✅ Igualación de color • 🚚 Entrega local</p>
+          </div>
+        </div>  
+      </div>
+    </section>
+
+    <!-- =========================
+     MAPA (Google Maps)
+     ========================= -->
+
+    <section id="ubicacion">
+      <div class="wrap">
+        <div class="sectionHead">
+          <div>
+            <h2 class="sectionTitle">Ubicacion</h2>
+            <p class="sectionLead">Encuentranos rapido. Puedes abrir la ruta directo en Google Maps</p>
+          </div>
+        </div>
+
+        <div class="mapGrid">
+          <!-- Info rapida-->
+           <div class="sCard">
+            <h3 class="sCard__title">Direccion</h3>
+            <p class="sCard__text" id="addressTextMap">-</p>
+
+            <div class="mt10">
+              <!--Bton para abrir Maps (lo llena JS)-->
+              <a class="btn" id="btnDirections" href="#" target="_blank" rel="noopener">
+              Como llegar ↗
+            </a>
+            </div>
+
+            <p class ="small mt10">
+              Tip: Si vienes en auto, revisa el trafico antes de salir.
+            </p>           
+           </div>
+
+           <!--Mapa-->
+           <div class="mapFrame card">
+            <!--EL src se lo pondremos desde JS para que sea mas facil de cambiar-->
+            <iframe
+              id="mapIframe"
+              title="Mapa de ubicacion"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen=""
+              ></iframe>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================
+         FOOTER
+         ========================= -->
+<footer class="footer">
+  <div class="wrap footerBar">
+    <!-- Texto legal (centrado) -->
+    <div class="footerLegal">
+      <span>Grupo Berel <span id="footerYear"></span></span>
+      <span class="sep">|</span>
+      <a href="#" id="privacyLink">Aviso de Privacidad</a>
+      <span class="sep">|</span>
+      <a href="#" id="termsLink">Términos y Condiciones</a>
+    </div>
+
+    <!-- Redes sociales (derecha) -->
+    <div class="footerSocial">
+      <a id="fFacebook" href="#" aria-label="Facebook" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.3V12h2.3V9.8c0-2.3 1.4-3.6 3.5-3.6 1 0 2 .2 2 .2v2.2h-1.1c-1.1 0-1.4.7-1.4 1.4V12h2.4l-.4 2.9h-2v7A10 10 0 0 0 22 12Z"/></svg>
+      </a>
+
+      <a id="fX" href="#" aria-label="X" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.9 2H22l-7.5 8.6L23 22h-6.7l-5.2-6.5L5.6 22H2l8-9.2L1 2h6.8l4.7 6L18.9 2Zm-1.2 18h1.9L7.3 4H5.3l12.4 16Z"/></svg>
+      </a>
+
+      <a id="fYouTube" href="#" aria-label="YouTube" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M23.5 6.2s-.2-1.7-.9-2.5c-.8-.9-1.7-.9-2.1-1C16.9 2.2 12 2.2 12 2.2h0s-4.9 0-8.5.5c-.4.1-1.3.1-2.1 1C.7 4.5.5 6.2.5 6.2S0 8.2 0 10.2v1.7c0 2 .5 4 .5 4s.2 1.7.9 2.5c.8.9 1.9.9 2.4 1 1.7.2 7.2.5 7.2.5s4.9 0 8.5-.5c.4-.1 1.3-.1 2.1-1 .7-.8.9-2.5.9-2.5s.5-2 .5-4v-1.7c0-2-.5-4-.5-4ZM9.5 14.7V7.8l6.3 3.5-6.3 3.4Z"/></svg>
+      </a>
+
+      <a id="fPinterest" href="#" aria-label="Pinterest" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.5 2 3 5.6 3 9.9c0 2.7 1 5.1 3.1 6 .3.1.6 0 .7-.3.1-.2.2-.7.3-1 .1-.3 0-.4-.2-.6-.6-.7-1-1.6-1-2.9 0-3.7 2.8-7 7.3-7 4 0 6.2 2.4 6.2 5.7 0 4.3-1.9 7.9-4.7 7.9-1.6 0-2.7-1.3-2.3-2.8.4-1.9 1.2-4 1.2-5.4 0-1.2-.7-2.3-2-2.3-1.6 0-2.9 1.7-2.9 4 0 1.5.5 2.5.5 2.5l-2 8.4c-.6 2.4-.1 5.4-.1 5.7 0 .2.2.3.3.1.1-.2 1.6-2.1 2.1-4.4.2-.6 1.1-4.1 1.1-4.1.5 1 1.9 1.8 3.4 1.8 4.5 0 7.6-4.1 7.6-9.6C21 6 17.1 2 12 2Z"/></svg>
+      </a>
+
+      <a id="fInstagram" href="#" aria-label="Instagram" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M7 2C4.2 2 2 4.2 2 7v10c0 2.8 2.2 5 5 5h10c2.8 0 5-2.2 5-5V7c0-2.8-2.2-5-5-5H7Zm10 2c1.7 0 3 1.3 3 3v10c0 1.7-1.3 3-3 3H7c-1.7 0-3-1.3-3-3V7c0-1.7 1.3-3 3-3h10Zm-5 3.5A4.5 4.5 0 1 0 16.5 12 4.5 4.5 0 0 0 12 7.5Zm0 7.4A2.9 2.9 0 1 1 14.9 12 2.9 2.9 0 0 1 12 14.9Z"/></svg>
+      </a>
+      
+      <a id="fTikTok" href="#" aria-label="TikTok" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M16 8.1c1.2.9 2.6 1.4 4 1.4V6.6c-.3 0-.7 0-1-.1-.9-.2-1.7-.7-2.3-1.3-.6-.6-1-1.4-1.2-2.2H12v11.2c0 .9-.7 1.6-1.6 1.6s-1.6-.7-1.6-1.6  .7-1.6 1.6-1.6c.2 0 .4 0 .6.1V9.3c-.2 0-.4 0-.6 0-2.7 0-4.8 2.2-4.8 4.8S7.7 19 10.4 19s4.8-2.2 4.8-4.8V8.1Z"/></svg>
+      </a>
+      
+      <a id="fLinkedIn" href="#" aria-label="LinkedIn" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.9 3.9 6 2.5 6S0 4.9 0 3.5 1.1 1 2.5 1 4.98 2.1 4.98 3.5ZM0 8h5v16H0V8Zm7.5 0h4.8v2.2h.1c.7-1.3 2.4-2.7 4.9-2.7 5.2 0 6.2 3.4 6.2 7.8V24h-5v-7.7c0-1.8 0-4.2-2.6-4.2-2.6 0-3 2-3 4.1V24h-5V8Z"/></svg>
+      </a>            
+    </div>
+  </div>
+</footer>
+
+  </main>
+
+  <!-- =========================
+       MODAL (detalles del producto)
+       ========================= -->
+  <div class="backdrop" id="modalBackdrop" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modalHead">
+        <strong id="modalTitle">Detalles</strong>
+        <button class="close" id="btnCloseModal" aria-label="Cerrar">✕</button>
+      </div>
+
+      <div class="modalBody">
+        <div class="modalImg" aria-hidden="true"></div>
+
+        <div class="modalInfo">
+          <h4 id="mName">—</h4>
+          <p id="mDesc">—</p>
+
+          <div class="kv">
+            <div><b>Uso</b><span id="mUse">—</span></div>
+            <div><b>Rendimiento</b><span id="mYield">—</span></div>
+            <div><b>Presentación</b><span id="mSize">—</span></div>
+            <div><b>Precio</b><span id="mPrice">—</span></div>
+          </div>
+
+          <div class="modalActions">
+            <button class="btn" id="btnAddFromModal">Agregar al carrito</button>
+            <button class="ghost" id="btnAskWhats">Preguntar por WhatsApp</button>
+          </div>
+
+          <p class="small mt10">Tip: manda foto del color o código si ya lo tienes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       CARRITO (panel lateral)
+       ========================= -->
+  <aside class="drawer" id="cartDrawer" aria-label="Carrito">
+    <div class="drawerHead">
+      <strong>Tu carrito</strong>
+      <button class="close" id="btnCloseCart" aria-label="Cerrar carrito">✕</button>
+    </div>
+
+    <div class="drawerBody" id="cartItems"></div>
+
+    <div class="drawerFoot">
+      <div class="totRow">
+        <span>Total</span>
+        <span id="cartTotal">$0</span>
+      </div>
+
+      <button class="btn" id="btnCheckout">Pedir por WhatsApp</button>
+      <button class="iconbtn" id="btnEmpty">Vaciar carrito</button>
+      <div class="small">El pedido se envía por WhatsApp con tu lista de productos.</div>
+    </div>
+  </aside>
+
+  <!-- ✅ En Vite el JS va aquí -->
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
